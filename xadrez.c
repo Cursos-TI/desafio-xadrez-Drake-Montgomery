@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+//inicialização do tabuleiro
 int tabuleiro [8][8], rows, columns;
+
+// Função da torre, ela recebe um valor como parametro que serve de referencia para saber se vai para direita ou esquerda.
 void mov_Torre(int direcao) {
     if(direcao == 1) {
         for( int rows = 0; rows < 8; rows++) {
@@ -86,39 +89,71 @@ void mov_Torre(int direcao) {
                 }
                 printf("[%d] ", tabuleiro[rows][columns]);
                 }
+        }
+        printf("\n");
+        printf("O movimento feito foi: \n");
+        int x = 0;
+        do{
+            printf("Direita\n");
+            x++;
+        } while (x !=  8);
+        printf("============================================\n");
+
+        }
+};
+
+// Função que assim como a função da torre, recebe um parametro para saber a direção inicial do movimento, direita ou esquerda.
+//uasmos switch para saber colocar o numero 1 no tabuleiro em conjunto com a estrutura for e do while para escrever na tela o movimento
+void mov_Rainha(int direcao_inicial) {
+    switch (direcao_inicial)
+    {
+        //Esquerda
+        case 1:
+            for( int rows = 0; rows < 8; rows++) {
+                printf("\n");
+                for( int columns = 0; columns < 8; columns ++) {
+                    if(rows == 7){
+                            switch (columns) {
+                                case 0:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                                case 1:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                                case 2:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                                case 3:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                                case 4:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                                case 5:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                                case 6:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                                case 7:
+                                    tabuleiro[rows][columns] = 1;
+                                    break;
+                            }
+                    } else {
+                        tabuleiro[rows][columns] = 0;
+                    }
+                    printf("[%d] ", tabuleiro[rows][columns]);
+                    }
             }
             printf("\n");
             printf("O movimento feito foi: \n");
             int x = 0;
             do{
-                printf("Direita\n");
+                printf("Esquerda\n");
                 x++;
             } while (x !=  8);
             printf("============================================\n");
-
-        }
-};
-
-void mov_Rainha(int direcao_inicial) {
-    switch (direcao_inicial)
-    {
-        case 1:
-        //Esquerda
-            for( int rows = 0; rows < 8; rows++) {
-                printf("\n");
-                for( int columns = 0; columns < 8; columns ++) {
-                    if(rows == 7) {
-                        tabuleiro[rows][columns] = (columns == 2 || columns == 3 ) ? 1 : 0; 
-                        printf("[%d] ", tabuleiro[rows][columns]);    
-                    }
-                    else {
-                        tabuleiro[rows][columns] = 0;
-                        printf("[%d] ", tabuleiro[rows][columns]);   
-                    }
-                    }
-                }
-                printf("\n");
-                break;
+            break;
         case 2:
             //Diagonal Esqueda
             for( int rows = 0; rows < 8; rows++) {
@@ -179,6 +214,7 @@ int main() {
     int moviemento_Rainha;
     int movimento_bispo;
     int x;
+    //while para dar as opções das peças, e switch para rodar a escolha do usuario.
     while(choice  != 5) {
         printf("Escolha uma peça:\n1- Cavalo\n2- Torre\n3- Bispo\n4- Rainha\n5- Sair\n");
         scanf("%i", & choice);
@@ -254,6 +290,7 @@ int main() {
                     printf("============================================\n");
                 };
                 break;
+
             case 2:
                 //Torre
                 printf("Escolha a direção do movimento da Torre:\n1- Cima\n2- Direita\n");
